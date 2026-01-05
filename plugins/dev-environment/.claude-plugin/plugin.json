@@ -1,0 +1,9 @@
+{
+  "name": "dev-environment",
+  "version": "1.0.0",
+  "description": "Local development environment patterns with Launchpad CLI for Docker-based PHP development.",
+  "author": "Liftoff",
+  "repository": "https://github.com/liftoff/claude-plugins",
+  "keywords": ["launchpad", "docker", "php", "development"],
+  "requires": []
+}

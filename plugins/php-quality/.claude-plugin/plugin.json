@@ -1,0 +1,14 @@
+{
+  "name": "php-quality",
+  "version": "1.0.0",
+  "description": "Automated PHP code quality enforcement with Rector, Pint, PHPStan/Larastan, and Pest integration",
+  "author": {
+    "name": "Liftoff Team"
+  },
+  "repository": "https://github.com/hardimpactdev/claude-plugins-marketplace",
+  "license": "MIT",
+  "keywords": ["php", "quality", "rector", "pint", "phpstan", "larastan", "pest"],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "hooks": "./hooks/hooks.json"
+}

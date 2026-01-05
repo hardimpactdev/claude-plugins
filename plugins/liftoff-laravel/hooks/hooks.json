@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tool_name": "Write",
+          "file_path": "\\.php$"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/php-quality.sh"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name": "Edit",
+          "file_path": "\\.php$"
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/php-quality.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+name: Validate Plugins
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'plugins/**'
+      - '.claude-plugin/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'plugins/**'
+      - '.claude-plugin/**'
+
+jobs:
+  validate-marketplace:
+    runs-on: ubuntu-latest
+    name: Validate Marketplace Manifest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate marketplace.json
+        run: |
+          echo "Validating marketplace.json..."
+          if ! python3 -c "import json; json.load(open('.claude-plugin/marketplace.json'))"; then
+            echo "Error: marketplace.json is not valid JSON"
+            exit 1
+          fi
+          echo "marketplace.json is valid JSON"
+
+      - name: Check required fields
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+
+          with open('.claude-plugin/marketplace.json') as f:
+              data = json.load(f)
+
+          required = ['name', 'plugins']
+          missing = [r for r in required if r not in data]
+          if missing:
+              print(f"Error: Missing required fields: {missing}")
+              sys.exit(1)
+
+          for plugin in data.get('plugins', []):
+              plugin_required = ['name', 'source']
+              plugin_missing = [r for r in plugin_required if r not in plugin]
+              if plugin_missing:
+                  print(f"Error: Plugin '{plugin.get('name', 'unknown')}' missing: {plugin_missing}")
+                  sys.exit(1)
+
+          print("All required fields present")
+          EOF
+
+  validate-plugins:
+    runs-on: ubuntu-latest
+    name: Validate Plugin Structure
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate plugin manifests
+        run: |
+          for plugin_dir in plugins/*/; do
+            plugin_name=$(basename "$plugin_dir")
+            manifest="$plugin_dir.claude-plugin/plugin.json"
+
+            echo "Validating $plugin_name..."
+
+            if [ ! -f "$manifest" ]; then
+              echo "Error: $plugin_name missing plugin.json"
+              exit 1
+            fi
+
+            if ! python3 -c "import json; json.load(open('$manifest'))"; then
+              echo "Error: $manifest is not valid JSON"
+              exit 1
+            fi
+
+            # Check required fields
+            python3 << EOF
+          import json
+          import sys
+
+          with open('$manifest') as f:
+              data = json.load(f)
+
+          required = ['name', 'version', 'description']
+          missing = [r for r in required if r not in data]
+          if missing:
+              print(f"Error: $plugin_name missing required fields: {missing}")
+              sys.exit(1)
+          EOF
+
+            echo "$plugin_name: OK"
+          done
+
+      - name: Validate skill files
+        run: |
+          for skill_file in plugins/*/skills/*/SKILL.md; do
+            if [ -f "$skill_file" ]; then
+              echo "Validating $skill_file..."
+
+              # Check for required frontmatter
+              if ! head -1 "$skill_file" | grep -q "^---"; then
+                echo "Error: $skill_file missing YAML frontmatter"
+                exit 1
+              fi
+
+              # Check for required fields in frontmatter
+              if ! grep -q "^name:" "$skill_file"; then
+                echo "Error: $skill_file missing 'name' in frontmatter"
+                exit 1
+              fi
+
+              if ! grep -q "^description:" "$skill_file"; then
+                echo "Error: $skill_file missing 'description' in frontmatter"
+                exit 1
+              fi
+
+              echo "$skill_file: OK"
+            fi
+          done
+
+      - name: Validate hooks
+        run: |
+          for hooks_file in plugins/*/hooks/hooks.json; do
+            if [ -f "$hooks_file" ]; then
+              echo "Validating $hooks_file..."
+              if ! python3 -c "import json; json.load(open('$hooks_file'))"; then
+                echo "Error: $hooks_file is not valid JSON"
+                exit 1
+              fi
+              echo "$hooks_file: OK"
+            fi
+          done
+
+      - name: Check script permissions
+        run: |
+          for script in plugins/*/scripts/*.sh; do
+            if [ -f "$script" ]; then
+              if [ ! -x "$script" ]; then
+                echo "Warning: $script is not executable"
+              fi
+            fi
+          done
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    name: Lint Markdown Files
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check markdown files exist
+        run: |
+          for plugin_dir in plugins/*/; do
+            plugin_name=$(basename "$plugin_dir")
+
+            # Check for README
+            if [ ! -f "${plugin_dir}README.md" ]; then
+              echo "Warning: $plugin_name missing README.md"
+            fi
+          done
+
+      - name: Validate command files
+        run: |
+          for cmd_file in plugins/*/commands/*.md; do
+            if [ -f "$cmd_file" ]; then
+              # Check file has content
+              if [ ! -s "$cmd_file" ]; then
+                echo "Error: $cmd_file is empty"
+                exit 1
+              fi
+              echo "$cmd_file: OK"
+            fi
+          done

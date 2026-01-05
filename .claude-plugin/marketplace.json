@@ -1,0 +1,78 @@
+{
+  "name": "liftoff-plugins-marketplace",
+  "owner": {
+    "name": "Liftoff Team",
+    "email": "plugins@hardimpact.dev"
+  },
+  "metadata": {
+    "description": "Claude Code plugins for the Liftoff ecosystem - Laravel, Vue, and full-stack development tools",
+    "version": "1.0.0",
+    "homepage": "https://github.com/hardimpactdev/claude-plugins-marketplace",
+    "license": "MIT"
+  },
+  "plugins": [
+    {
+      "name": "liftoff-laravel",
+      "source": "./plugins/liftoff-laravel",
+      "description": "Laravel 12 + PHP 8.4 development with Waymaker routing, DTOs, and Pest testing",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["laravel", "php", "backend", "waymaker", "pest"],
+      "license": "MIT"
+    },
+    {
+      "name": "liftoff-vue",
+      "source": "./plugins/liftoff-vue",
+      "description": "Vue 3 + TypeScript + Tailwind with Composition API and Inertia.js patterns",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["vue", "typescript", "tailwind", "inertia", "frontend"],
+      "license": "MIT"
+    },
+    {
+      "name": "php-quality",
+      "source": "./plugins/php-quality",
+      "description": "PHP code quality automation with Rector, Pint, PHPStan, and Pest",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["php", "quality", "rector", "pint", "phpstan"],
+      "license": "MIT"
+    },
+    {
+      "name": "git-workflow",
+      "source": "./plugins/git-workflow",
+      "description": "Git workflow automation - releases, changelogs, and documentation updates",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["git", "release", "changelog", "documentation"],
+      "license": "MIT"
+    },
+    {
+      "name": "dev-environment",
+      "source": "./plugins/dev-environment",
+      "description": "Local development environment management with Launchpad CLI",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["development", "launchpad", "docker", "local"],
+      "license": "MIT"
+    },
+    {
+      "name": "liftoff-scaffold",
+      "source": "./plugins/liftoff-scaffold",
+      "description": "Project scaffolding and initialization for the Liftoff ecosystem",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["scaffold", "init", "setup", "starter"],
+      "license": "MIT"
+    },
+    {
+      "name": "template-plugin",
+      "source": "./plugins/template-plugin",
+      "description": "Template plugin demonstrating all Claude Code plugin components",
+      "version": "1.0.0",
+      "author": { "name": "Liftoff Team" },
+      "keywords": ["template", "example", "starter"],
+      "license": "MIT"
+    }
+  ]
+}

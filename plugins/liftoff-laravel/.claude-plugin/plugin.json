@@ -1,0 +1,15 @@
+{
+  "name": "liftoff-laravel",
+  "version": "1.0.0",
+  "description": "Comprehensive Laravel development support for the Liftoff ecosystem - PHP 8.4, Laravel 12, Waymaker routing, DTOs, and testing patterns",
+  "author": {
+    "name": "Liftoff Team"
+  },
+  "repository": "https://github.com/hardimpactdev/claude-plugins-marketplace",
+  "license": "MIT",
+  "keywords": ["laravel", "php", "backend", "liftoff", "waymaker", "pest"],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json"
+}

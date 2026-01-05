@@ -1,0 +1,9 @@
+{
+  "name": "liftoff-scaffold",
+  "version": "1.0.0",
+  "description": "Project scaffolding patterns for Liftoff stack (Laravel 12 + Vue 3 + Inertia + TypeScript).",
+  "author": "Liftoff",
+  "repository": "https://github.com/liftoff/claude-plugins",
+  "keywords": ["laravel", "vue", "scaffold", "project-setup"],
+  "requires": ["liftoff-laravel", "liftoff-vue"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "liftoff-vue",
+  "version": "1.0.0",
+  "description": "Vue 3 + TypeScript patterns for Liftoff projects. Includes component patterns, Inertia.js integration, forms, composables, and Tailwind styling.",
+  "author": "Liftoff",
+  "repository": "https://github.com/liftoff/claude-plugins",
+  "keywords": ["vue", "typescript", "inertia", "tailwind", "frontend"],
+  "requires": []
+}

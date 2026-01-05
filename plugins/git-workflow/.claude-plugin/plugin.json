@@ -1,0 +1,14 @@
+{
+  "name": "git-workflow",
+  "version": "1.0.0",
+  "description": "Git workflow automation including semantic versioning releases, documentation updates, and changelog generation",
+  "author": {
+    "name": "Liftoff Team"
+  },
+  "repository": "https://github.com/hardimpactdev/claude-plugins-marketplace",
+  "license": "MIT",
+  "keywords": ["git", "release", "changelog", "documentation", "workflow"],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "agents": "./agents/"
+}

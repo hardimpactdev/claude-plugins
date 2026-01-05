@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "example-server": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/mcp-server.js"],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "disabled": true
+    }
+  }
+}
