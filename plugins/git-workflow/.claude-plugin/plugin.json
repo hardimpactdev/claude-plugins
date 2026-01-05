@@ -1,6 +1,6 @@
 {
   "name": "git-workflow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Git workflow automation including semantic versioning releases, documentation updates, and changelog generation",
   "author": {
     "name": "Liftoff Team"

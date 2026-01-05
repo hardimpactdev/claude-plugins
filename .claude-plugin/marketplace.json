@@ -42,7 +42,7 @@
       "name": "git-workflow",
       "source": "./plugins/git-workflow",
       "description": "Git workflow automation - releases, changelogs, and documentation updates",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": { "name": "Liftoff Team" },
       "keywords": ["git", "release", "changelog", "documentation"],
       "license": "MIT"
