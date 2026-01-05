@@ -2,26 +2,11 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": {
-          "tool_name": "Write",
-          "file_path": "\\.php$"
-        },
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/post-php-write.sh"
-          }
-        ]
-      },
-      {
-        "matcher": {
-          "tool_name": "Edit",
-          "file_path": "\\.php$"
-        },
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/post-php-write.sh"
+            "command": "jq -r '.tool_input.file_path // .tool_input.filePath // empty' | grep -q '\\.php$' && ${CLAUDE_PLUGIN_ROOT}/scripts/post-php-write.sh || true"
           }
         ]
       }
