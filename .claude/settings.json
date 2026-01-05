@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "marketplace": "hardimpactdev/claude-plugins",
+    "installed": [
+      "git-workflow"
+    ]
+  }
+}
