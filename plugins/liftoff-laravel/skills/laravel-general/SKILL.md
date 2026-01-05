@@ -83,9 +83,36 @@ protected function isAccessible(User $user, ?string $path = null): bool
 - Never expose sensitive data in responses
 - Never log or commit secrets/keys
 
+## Business Logic Organization
+
+### Action Pattern
+Use Actions for business logic beyond simple CRUD:
+- `final readonly` classes with single `handle()` method
+- Organize in `app/Actions/` by domain (e.g., `Actions/Orders/`)
+- See `laravel-actions` skill for full details
+
+```php
+final readonly class CreateOrder
+{
+    public function __construct(private PaymentService $payments) {}
+
+    public function handle(User $user, OrderData $data): Order
+    {
+        // Business logic here
+    }
+}
+```
+
+### Services
+Use Services for reusable infrastructure:
+- Multiple related methods
+- Wrap external systems (APIs, file storage)
+- Shared utilities across Actions
+
 ## Common Pitfalls to Avoid
 - Don't repeat string values - use Enums
 - Don't create base folders without approval
 - Don't skip FormRequest validation
 - Don't use raw DB queries when Eloquent works
 - Don't forget eager loading for relationships
+- Don't put business logic in controllers - use Actions

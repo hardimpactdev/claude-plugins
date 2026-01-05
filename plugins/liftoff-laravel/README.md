@@ -23,6 +23,7 @@ Claude automatically applies these skills when working on relevant files:
 | Skill | Trigger | Description |
 |-------|---------|-------------|
 | `laravel-general` | `*.php` | PHP 8.4 conventions, Laravel 12 structure |
+| `laravel-actions` | `app/Actions/**/*.php` | Business logic encapsulation pattern |
 | `laravel-controllers` | `*Controller.php` | Controller patterns, resourceful methods |
 | `laravel-routes` | Route files | Waymaker attribute-based routing |
 | `laravel-validation` | `*Request.php` | FormRequest patterns, validation rules |
