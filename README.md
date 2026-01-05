@@ -38,7 +38,6 @@ This repository serves as both:
 3. **Add your components**
    - Commands in `commands/`
    - Skills in `skills/`
-   - Agents in `agents/`
    - Hooks in `hooks/`
 
 4. **Test locally**
@@ -67,13 +66,15 @@ This repository serves as both:
 
 ## Plugin Components
 
-| Component | Location | Description |
-|-----------|----------|-------------|
-| **Commands** | `commands/*.md` | Slash commands (`/plugin:command`) |
-| **Skills** | `skills/*/SKILL.md` | Auto-invoked capabilities |
-| **Agents** | `agents/*.md` | Specialized subagents |
-| **Hooks** | `hooks/hooks.json` | Event handlers |
-| **MCP Servers** | `.mcp.json` | External tool integrations |
+| Component | Location | Description | Status |
+|-----------|----------|-------------|--------|
+| **Commands** | `commands/*.md` | Slash commands (`/plugin:command`) | Supported |
+| **Skills** | `skills/*/SKILL.md` | Auto-invoked capabilities | Supported |
+| **Hooks** | `hooks/hooks.json` | Event handlers | Supported |
+| **MCP Servers** | `.mcp.json` | External tool integrations | Supported |
+| **Agents** | `agents/*.md` | Specialized subagents | **Not yet supported** |
+
+> **Note**: The `agents` field in `plugin.json` is not currently supported and will cause plugin installation to fail. Do not include `"agents": "./agents/"` in your plugin manifest.
 
 ## Creating a New Plugin
 
@@ -87,11 +88,17 @@ Every plugin needs `.claude-plugin/plugin.json`:
   "version": "1.0.0",
   "description": "What your plugin does",
   "author": { "name": "Your Name" },
+  "license": "MIT",
+  "keywords": ["example", "demo"],
   "commands": "./commands/",
   "skills": "./skills/",
-  "agents": "./agents/"
+  "hooks": "./hooks/hooks.json"
 }
 ```
+
+**Required fields**: `name`, `version`, `description`, `author`
+
+**Optional fields**: `license`, `keywords`, `repository`, `commands`, `skills`, `hooks`, `mcpServers`
 
 ### 2. Commands
 
@@ -117,20 +124,6 @@ allowed-tools: Read, Grep, Glob
 # Skill Instructions
 
 Step-by-step guidance for Claude...
-```
-
-### 4. Agents
-
-Create agent definitions in `agents/`:
-
-```markdown
-# Agent Name
-
-## Capabilities
-What this agent specializes in...
-
-## Instructions
-How the agent should operate...
 ```
 
 ## Adding to Marketplace
