@@ -1,0 +1,12 @@
+{
+  "name": "beads-workflow",
+  "version": "1.0.0",
+  "description": "Git-backed issue tracking for AI agents using beads (bd). Provides persistent task memory with dependency tracking.",
+  "author": "Liftoff",
+  "repository": "https://github.com/steveyegge/beads",
+  "keywords": ["beads", "issues", "tasks", "workflow", "agent-memory"],
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "hooks": "./hooks/hooks.json",
+  "requires": []
+}
