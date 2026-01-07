@@ -9,6 +9,5 @@
   "repository": "https://github.com/steveyegge/beads",
   "keywords": ["beads", "issues", "tasks", "workflow", "agent-memory"],
   "skills": "./skills/",
-  "commands": "./commands/",
-  "hooks": "./hooks/hooks.json"
+  "commands": "./commands/"
 }
