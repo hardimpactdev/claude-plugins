@@ -1,6 +1,6 @@
 {
   "name": "beads-workflow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Git-backed issue tracking for AI agents using beads (bd). Provides persistent task memory with dependency tracking.",
   "author": {
     "name": "Liftoff Team",
